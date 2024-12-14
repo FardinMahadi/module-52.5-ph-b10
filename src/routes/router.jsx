@@ -3,6 +3,8 @@ import HomeLayout from "../layouts/HomeLayout";
 import { to } from "./../../node_modules/moment/src/lib/moment/to";
 import CategoryNews from "../pages/CategoryNews";
 import AuthLayout from "../layouts/AuthLayout";
+import Login from "../pages/Login";
+import Register from "../pages/Register";
 
 const router = createBrowserRouter([
   {
@@ -33,11 +35,11 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/auth/login",
-        element: <h2>Login</h2>,
+        element: <Login></Login>,
       },
       {
         path: "/auth/register",
-        element: <h2>Register</h2>,
+        element: <Register></Register>,
       },
     ],
   },
