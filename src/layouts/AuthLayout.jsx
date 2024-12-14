@@ -7,7 +7,7 @@ const AuthLayout = () => {
       <header className="py-3 w-11/12 mx-auto">
         <Navbar />
       </header>
-      <main className="h-screen flex justify-center items-center">
+      <main className="min-h-screen flex justify-center items-center py-10">
         <Outlet />
       </main>
     </div>
