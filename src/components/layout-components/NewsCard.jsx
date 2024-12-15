@@ -1,5 +1,5 @@
 import { FaRegStar, FaStar, FaEye } from "react-icons/fa";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const NewsCard = ({ news }) => {
   const {
@@ -55,12 +55,13 @@ const NewsCard = ({ news }) => {
         {/* Description */}
         <p className="text-gray-600 text-sm">
           {details?.slice(0, 100)}...{" "}
-          <span
+          <Link
+            to={`/news/${news._id}`}
             onClick={handleReadMore}
             className="text-yellow-500 cursor-pointer"
           >
             Read More
-          </span>
+          </Link>
         </p>
 
         {/* Card Footer */}
