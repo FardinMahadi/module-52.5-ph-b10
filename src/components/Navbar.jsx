@@ -4,23 +4,34 @@ import { useContext } from "react";
 import { AuthContext } from "../provider/AuthProvider";
 
 const Navbar = () => {
-  const { user } = useContext(AuthContext);
+  const { user, logOut } = useContext(AuthContext);
   return (
     <div className="flex justify-between items-center">
-      <div>{user && user.name}</div>
+      <div>{user && user.email}</div>
       <div className="nav space-x-5">
         <Link to="/">Home</Link>
         <Link to="/career">Career</Link>
         <Link to="/about">About</Link>
       </div>
       <div className="login flex items-center gap-2">
-        <img src={userIcon} />
-        <Link
-          to="/auth/login"
-          className="btn btn-neutral rounded-none text-white px-7"
-        >
-          Login
-        </Link>
+        <div>
+          <img src={userIcon} />
+        </div>
+        {user && user?.email ? (
+          <button
+            onClick={logOut}
+            className="btn btn-neutral rounded-none text-white px-7"
+          >
+            Log Out
+          </button>
+        ) : (
+          <Link
+            to="/auth/login"
+            className="btn btn-neutral rounded-none text-white px-7"
+          >
+            Login
+          </Link>
+        )}
       </div>
     </div>
   );
