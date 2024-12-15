@@ -1,9 +1,13 @@
 import { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../provider/AuthProvider";
+import Loading from "./Loading";
 
 const Login = () => {
-  const { logIn, setUser } = useContext(AuthContext);
+  const { logIn, setUser, loading, setLoading } = useContext(AuthContext);
+  const location = useLocation();
+  console.log(location);
+  const navigate = useNavigate();
 
   const handleLogIn = (e) => {
     e.preventDefault();
@@ -16,11 +20,17 @@ const Login = () => {
       .then((result) => {
         const user = result.user;
         setUser(user);
+        navigate("/category/01");
       })
       .catch((error) => {
         alert(error.code);
       });
   };
+
+  if (loading) {
+    return <Loading></Loading>;
+  }
+
   return (
     <div className="card bg-white  w-full max-w-lg shrink-0 rounded-none p-10">
       <h2 className="text-2xl font-semibold text-center ">

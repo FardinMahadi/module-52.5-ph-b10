@@ -4,6 +4,9 @@ import LatestNews from "../components/LatestNews";
 import LeftNavbar from "../components/layout-components/LeftNavbar";
 import RightNav from "../components/layout-components/RightNav";
 import Navbar from "../components/Navbar";
+import { useContext, useEffect } from "react";
+import { AuthContext } from "../provider/AuthProvider";
+import Loading from "../pages/Loading";
 
 const HomeLayout = () => {
   return (

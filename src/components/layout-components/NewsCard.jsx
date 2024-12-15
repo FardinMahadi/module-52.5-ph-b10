@@ -17,7 +17,6 @@ const NewsCard = ({ news }) => {
 
   const handleReadMore = () => {
     navigate(`/news/${category_id}`);
-    console.log("working");
   };
 
   return (
