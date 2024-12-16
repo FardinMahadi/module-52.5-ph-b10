@@ -1,13 +1,15 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../provider/AuthProvider";
 import Loading from "./Loading";
 
 const Login = () => {
-  const { logIn, setUser, loading, setLoading } = useContext(AuthContext);
+  const { logIn, setUser } = useContext(AuthContext);
+  const [error, setError] = useState({});
   const location = useLocation();
-  console.log(location);
   const navigate = useNavigate();
+
+  console.log(location);
 
   const handleLogIn = (e) => {
     e.preventDefault();
@@ -20,16 +22,12 @@ const Login = () => {
       .then((result) => {
         const user = result.user;
         setUser(user);
-        navigate("/category/01");
+        navigate(location?.state ? location.state : "/");
       })
-      .catch((error) => {
-        alert(error.code);
+      .catch((err) => {
+        setError({ ...error, login: err.code });
       });
   };
-
-  if (loading) {
-    return <Loading></Loading>;
-  }
 
   return (
     <div className="card bg-white  w-full max-w-lg shrink-0 rounded-none p-10">
@@ -60,6 +58,12 @@ const Login = () => {
             className="input input-bordered bg-white"
             required
           />
+          {/* error show */}
+          {error.login && (
+            <label className="label text-sm text-red-600">{error.login}</label>
+          )}
+
+          {/* forgot password */}
           <label className="label">
             <a href="#" className="label-text-alt link link-hover">
               Forgot password?
