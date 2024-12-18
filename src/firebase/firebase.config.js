@@ -5,12 +5,12 @@ import { initializeApp } from "firebase/app";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyBAhGwaVX4c0ScGK_PG_bdMeZ7YSwEubgM",
-  authDomain: "rumor-spreader.firebaseapp.com",
-  projectId: "rumor-spreader",
-  storageBucket: "rumor-spreader.firebasestorage.app",
-  messagingSenderId: "104525040463",
-  appId: "1:104525040463:web:10061aacdfdeb5c0b5933a",
+  apiKey: import.meta.env.VITE_apiKey,
+  authDomain: import.meta.env.VITE_authDomain,
+  projectId: import.meta.env.VITE_projectId,
+  storageBucket: import.meta.env.VITE_storageBucket,
+  messagingSenderId: import.meta.env.VITE_messagingSenderId,
+  appId: import.meta.env.VITE_appId,
 };
 
 // Initialize Firebase
